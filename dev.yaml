@@ -1,0 +1,30 @@
+clusters:
+  id: dev-cluster
+  metadata:
+    company: crp
+    business_unit: dig
+    service: ecommerce
+    application: demo
+    subservice: "01"
+  spec:
+    cluster_location: us-east4
+    node_locations:
+      - us-east4-a
+      - us-east4-b
+    authorized_networks: "[0.0.0.0/0]"
+    description: Clúster para desarrollo
+    deletion_protection: false
+    network: vpc-idp
+    subnetwork: subnet-idp
+    pods_range_name: gke-pods-range
+    services_range_name: gke-services-range
+  node_pools:
+    app-pool:
+      service_account: test-gke@corp-dev-infra-test.iam.gserviceaccount.com
+      size: xsmall
+      confidential: false
+      shielded_nodes: false
+  alerting_emails:
+    - arodrigug05@liverpool.com.mx
+  dynatrace: false
+  prismacloud: false
