@@ -1,0 +1,30 @@
+clusters:
+  - id: dev-cluster
+    metadata:
+      company: sub
+      business_unit: sw
+      service: my servicio
+      application: demo
+      subservice: "01"
+    spec:
+      cluster_location: us-east4-a
+      node_locations:
+        - us-east4
+        - us-east4-a
+      authorized_networks: "[0.0.0.0/0]"
+      description: Clúster para desarrollo
+      deletion_protection: true
+      network: vpc-idp
+      subnetwork: subnet-idp
+      pods_range_name: gke-pods-range
+      services_range_name: gke-services-range
+    node_pools:
+      app-pool:
+        service_account: test-gke@corp-dev-infra-test.iam.gserviceaccount.com
+        size: xsmall
+        confidential: true
+        shielded_nodes: true
+    alerting_emails:
+      - mail1@google.com
+    dynatrace: true
+    prismacloud: true
